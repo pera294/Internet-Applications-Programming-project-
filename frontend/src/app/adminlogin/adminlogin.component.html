@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="col-sm-12">
+                <nav class="navbar navbar-expand-sm menubg">
+                    <ul class="navbar-nav">
+
+                        <li class="nav-item">
+                            <a class="nav-link" href=''>Pocetna</a>
+                        </li>
+                    </ul>
+                        <h3 class="navtext"> Prijava za Admine</h3>
+                        <hr/>
+                       
+                </nav>
+    
+            </div>
+            
+        </div>
+
+        <div class="row pdleft">
+            <div class="col-sm-2">
+                <label>Korisnicko ime :</label>
+                <input type="text" class="form-control" name="un" required #un="ngModel" [(ngModel)]="username"> 
+                <div class="alert alert-warning p-1" *ngIf="un.invalid && un.touched">
+                    <small *ngIf="un.errors?.['required']"> Obavezno polje</small>
+                </div>
+            </div>
+        </div>
+
+        <div class="row pdleft">
+            <div class="col-sm-2">
+                <label>Lozinka:</label>
+                <input type="password" class="form-control" name="pass" required #pass="ngModel" [(ngModel)]="password"> 
+                <div class="alert alert-warning p-1" *ngIf="pass.invalid && pass.touched">
+                    <small *ngIf="pass.errors?.['required']"> Obavezno polje</small>
+                </div>
+            </div>
+        </div>
+        
+        <div class="pdleftdown">
+            <small *ngIf="this.message"  style="color:red;"> {{message}}</small>
+            
+        </div>
+
+        <div class="pdleft">
+            <button type="button" class="btn btn-danger" (click)="login()">Prijavi se </button>
+        </div>
+
+
+    
+    </div>
+
+   
+  
+
+
+
+
+
+
+</body>
+</html>

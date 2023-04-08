@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="col-sm-12">
+                <nav class="navbar navbar-expand-sm menubg">
+                    <h3 class="navtext"> Admin {{user.username}}</h3>
+
+                    <ul class="navbar-nav">
+
+                        <li class="nav-item pdleft ">
+                            <a class="nav-link" href='profile' (click)="this.profilechange()"> <img
+                                    [src]="'/assets/' + this.user.picture" alt=""
+                                    style="max-width: 50px; max-height :50px"> </a>
+                        </li>
+
+                        <li class="nav-item pdleft ">
+                            <button type="button" class="btn btn-light" (click)="logOut()">Odjava</button>
+                        </li>
+
+                    </ul>
+
+                </nav>
+
+            </div>
+
+        </div>
+
+        <div class="row">
+
+            <div class="text-decoration-underline">
+                <h2>Zahtevi za registraciju</h2>
+            </div>
+            <div *ngIf="pendingUsers.length>0 then thenBlock else elseBlock"></div>
+
+            <ng-template #thenBlock>
+
+                <table class="table table-striped table-light table-hover table-sm">
+
+                    <thead>
+                        <tr>
+                            <th>Ime</th>
+                            <th> Prezime</th>
+                            <th> Korisnicko ime</th>
+                            <th>Telefon</th>
+                            <th>Adresa</th>
+                            <th>Email</th>
+                            <th>Slika</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr *ngFor='let p of pendingUsers'>
+
+                            <td> {{p.firstname}} </td>
+                            <td> {{p.lastname}} </td>
+                            <td> {{p.username}} </td>
+                            <td>{{p.phone}}</td>
+                            <td>{{p.adress}}</td>
+                            <td>{{p.email}}</td>
+                            <td> <img [src]="'/assets/' + p.picture" alt="" style="max-width: 100px; max-height :100px">
+                            </td>
+                            <td><button type="button" class="btn btn-danger" (click)='approveUser(p.id)'>Odobri</button>
+                            </td>
+                            <td><button type="button" class="btn btn-danger"
+                                    (click)='denyUser(p.id,p.picture)'>Odbij</button></td>
+
+                        </tr>
+                    </tbody>
+
+                </table>
+
+            </ng-template>
+
+            <ng-template #elseBlock>
+                <h3>-Nema novih zahteva</h3>
+            </ng-template>
+
+            <div class="row col-sm-2">
+                <button type="button" class="btn btn-danger" (click)='gotoAdminRegister()'>Registruj novog
+                    korisnika</button>
+            </div>
+
+
+
+        </div>
+
+
+        <div class="row margintop">
+
+            <div class="text-decoration-underline">
+                <h2>Pregled Korisnika</h2>
+            </div>
+
+
+            <div *ngIf="registeredUsers.length>0 then thenBlock1 else elseBlock1"></div>
+
+            <ng-template #thenBlock1>
+
+                <table class="table table-striped table-light table-hover table-sm">
+
+                    <thead>
+                        <tr>
+                            <th>Ime</th>
+                            <th> Prezime</th>
+                            <th> Korisnicko ime</th>
+                            <th>Slika</th>
+                            <th>Tip</th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr *ngFor='let r of registeredUsers'>
+
+                            <td> {{r.firstname}} </td>
+                            <td> {{r.lastname}} </td>
+                            <td> {{r.username}} </td>
+                            <td> <img [src]="'/assets/' + r.picture" alt="" style="max-width: 100px; max-height :100px">
+                            </td>
+                            <td> {{r.type}} </td>
+
+                            <td><button type="button" class="btn btn-danger" *ngIf="r.type!='admin' "
+                                    (click)='changeType(r.id)'>Promeni Tip</button></td>
+                            <td><button type="button" class="btn btn-danger" *ngIf="r.type!='admin' "
+                                    (click)='changeUserProfile(r.id)'>Azuriraj profil</button> </td>
+
+                            <div *ngIf="r.type=='admin'  then thenBlock5 else elseBlock5"></div>
+
+                            <ng-template #thenBlock5>
+                                <td></td>
+                            </ng-template>
+
+
+                            <ng-template #elseBlock5>
+                                <td><button type="button" class="btn btn-danger" *ngIf="r.blocked==false"
+                                        (click)='changeBlocked(r.id)'>Blokiraj</button> </td>
+                            </ng-template>
+
+
+
+                            <td><button type="button" class="btn btn-danger" *ngIf="r.blocked==true"
+                                    [disabled]="r.type=='admin' " (click)='changeBlocked(r.id)'>Odblokiraj</button>
+                            </td>
+
+
+
+                            <div *ngIf="r.type=='admin'  then thenBlock6 else elseBlock6"></div>
+
+                            <ng-template #thenBlock6>
+                                <td></td>
+                            </ng-template>
+
+
+                            <ng-template #elseBlock6>
+                                <td><button type="button" class="btn btn-danger"
+                                        [disabled]=" !canDeleteUser(r.id) || r.type=='admin' "
+                                        (click)='deleteUser(r.id,r.picture)'>Izbrisi</button></td>
+                            </ng-template>
+
+
+
+
+
+                        </tr>
+                    </tbody>
+
+                </table>
+
+            </ng-template>
+
+            <ng-template #elseBlock1>
+                <h3>-Nema registrovanih korisnika</h3>
+            </ng-template>
+
+
+
+        </div>
+
+
+
+        <div class="row margintop">
+
+            <div class="text-decoration-underline">
+                <h2>Zahtevi za Knjige</h2>
+            </div>
+            <div *ngIf="pendingBooks.length>0 then thenBlock2 else elseBlock2"></div>
+
+            <ng-template #thenBlock2>
+
+                <table class="table table-striped table-light table-hover table-sm">
+
+                    <thead>
+                        <tr>
+                            <th>Naslov</th>
+                            <th> Autori</th>
+                            <th> Zanr</th>
+                            <th>Izdavac</th>
+                            <th>Godina izdavanja</th>
+                            <th>Jezik</th>
+                            <th>Predlozio</th>
+                            <th>Slika</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr *ngFor='let p of pendingBooks'>
+
+                            <td> {{p.title}} </td>
+                            <td> {{p.authors}} </td>
+                            <td> {{p.genre}}</td>
+                            <td>{{p.publisher}}</td>
+                            <td>{{p.year}}</td>
+                            <td>{{p.language}}</td>
+                            <td>{{this.getMyUserUsername(p.asker)}}</td>
+                            <td> <img [src]="'/assets/' + p.picture" alt="" style="max-width: 100px; max-height :100px">
+                            </td>
+                            <td><button type="button" class="btn btn-danger" (click)='approveBook(p.id)'>Odobri</button>
+                            </td>
+                            <td><button type="button" class="btn btn-danger"
+                                    (click)='denyBook(p.id,p.picture)'>Odbij</button></td>
+
+                        </tr>
+                    </tbody>
+
+                </table>
+
+            </ng-template>
+
+            <ng-template #elseBlock2>
+                <h3>-Nema novih zahteva</h3>
+            </ng-template>
+
+        </div>
+
+
+
+
+
+
+        <div class="row margintop ">
+
+            <div class="text-decoration-underline ">
+                <h2>Pregled svih Knjiga</h2>
+            </div>
+
+
+            <div *ngIf="this.registeredBooks.length>0 then thenBlock3 else elseBlock3"></div>
+
+            <ng-template #thenBlock3>
+
+                <table class="table table-striped table-light table-hover table-sm   ">
+
+                    <thead>
+                        <tr>
+                            <th>Naslov</th>
+                            <th> Autori</th>
+                            <th> Zanr</th>
+                            <th>Izdavac</th>
+                            <th>Godina izdavanja</th>
+                            <th>Jezik</th>
+                            <th>Predlozio</th>
+                            <th>Slika</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr *ngFor='let r of registeredBooks'>
+
+                            <td> {{r.title}} </td>
+                            <td> {{r.authors}} </td>
+                            <td> {{r.genre}}</td>
+                            <td>{{r.publisher}}</td>
+                            <td>{{r.year}}</td>
+                            <td>{{r.language}}</td>
+                            <td>{{this.getMyUserUsername(r.asker)}}</td>
+                            <td> <img [src]="'/assets/' + r.picture" alt="" style="max-width: 100px; max-height :100px">
+                            </td>
+                            <td><button type="button" class="btn btn-danger"
+                                    (click)="bookDetails(r.id)">Promeni</button>
+                            </td>
+                            <td><button type="button" class="btn btn-danger" (click)="this.deleteBook(r.id,r.picture)"
+                                    [disabled]="!this.canDeleteBook(r.id)">Izbrisi</button></td>
+
+
+
+                        </tr>
+                    </tbody>
+
+                </table>
+
+            </ng-template>
+
+            <ng-template #elseBlock3>
+                <h3>-Nema knjiga</h3>
+            </ng-template>
+
+        </div>
+
+
+
+
+
+        <div class="row pdleft margintop">
+
+            <div class="row pdleft text-decoration-underline">
+                <h2>Dodaj Knjigu</h2>
+            </div>
+
+            <div class="row pdleft">
+                <div class="col-sm-2">
+                    <label>Naslov:</label>
+                    <input type="text" class="form-control" name="tt" #tt="ngModel" [(ngModel)]="title">
+                </div>
+            </div>
+
+            <div class="row pdleft">
+                <div class="col-sm-2">
+                    <label>Autori:</label>
+                    <input type="text" class="form-control" name="au" #au="ngModel" [(ngModel)]="authors">
+
+                </div>
+            </div>
+
+            <div class="row pdleft">
+                <div class="col-sm-2">
+                    <label>Zanr:</label>
+                    <select multiple class="form-control" [(ngModel)]="genre">
+                        <option value="Triler">Triler </option>
+                        <option value="Horor">Horor </option>
+                        <option value="Drama">Drama </option>
+                        <option value="Fantastika">Fantastika </option>
+                        <option value="Ljubavna">Ljubavna </option>
+                        <option value="Istorijska">Istorijska </option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="row pdleft">
+                <div class="col-sm-2">
+                    <label>Izdavac:</label>
+                    <input type="text" class="form-control" name="pb" #pb="ngModel" [(ngModel)]="publisher">
+
+                </div>
+            </div>
+
+            <div class="row pdleft">
+                <div class="col-sm-2">
+                    <label>Godina izdavajna:</label>
+                    <input type="text" class="form-control" name="yr" #yr="ngModel" [(ngModel)]="year">
+
+                </div>
+            </div>
+
+            <div class="row pdleft">
+                <div class="col-sm-2">
+                    <label>Jezik:</label>
+                    <input type="text" class="form-control" name="lg" #lg="ngModel" [(ngModel)]="language">
+
+                </div>
+            </div>
+
+
+            <div class="row pdleft">
+                <div class="col-sm-2">
+                    <label>Slika:</label>
+                    <input type="file" id="myFile" name="book_picture" (change)="setPicture($event)">
+                </div>
+            </div>
+
+            <div class="pdleftdown">
+                <small *ngIf="this.message"> {{message}}</small>
+            </div>
+
+
+            <div class="pdleft">
+                <button type="button" class="btn btn-danger" (click)="addBook()">Dodaj Knjigu</button>
+            </div>
+
+        </div>
+
+
+
+
+
+        <div class="row  margintop margindown pdleft">
+            <div class="col-sm-3 borderblack bgred">Broj dana za vracanje knjige:</div>
+            <div class="col-sm-1 borderblack"> {{this.time}}</div>
+            <div class="col-sm-1"> <button type="button" class="btn btn-danger btn-sm" (click)="timeflag()">Promeni
+                </button> </div>
+
+            <div class="row col-sm-7 pdleft" *ngIf="this.flagtime">
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" name="time" [(ngModel)]="time2">
+                </div>
+
+                <div class="col-sm-2">
+                    <button type="button" class="btn btn-danger btn-sm" (click)="setTime(time2)">Potvrdi </button>
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+</body>
+
+</html>

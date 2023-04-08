@@ -1,0 +1,58 @@
+.menubg {
+    background-color: #cc0000;
+    margin-bottom: 20px;
+    border-bottom: 2px solid black;
+}
+
+.navtext {
+    color: white;
+    padding-left: 10px;
+}
+
+.nav-link {
+    font-weight: bold;
+    color: white;
+}
+
+.nav-item a:hover {
+    color: black;
+}
+
+.col-sm-12 {
+    padding: 0px;
+}
+
+.pdleft {
+    padding-left: 20px;
+}
+
+.pdleftdown {
+    padding-left: 20px;
+    padding-bottom: 20px;
+
+}
+
+img {
+    border: 5px solid #555;
+}
+
+.margin {
+    margin-bottom: 7px;
+    margin-left: 15px;
+}
+
+
+.marginleft {
+ 
+    margin-left: 20px;
+}
+
+.borderblack {
+    border: 1px solid black;
+}
+
+.bgred {
+    background-color: #cc0000;
+    font-weight: bold;
+    color: white;
+}

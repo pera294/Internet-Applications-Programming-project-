@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="col-sm-12">
+                <nav class="navbar navbar-expand-sm menubg">
+
+                    <ul class="navbar-nav">
+
+                        <li class="nav-item">
+                            <a class="nav-link" href=''>Pocetna</a>
+                        </li>
+                    </ul>
+                    <h3 class="navtext"> Registracija</h3>
+                    <hr />
+
+                </nav>
+
+            </div>
+
+        </div>
+    </div>
+
+    <div class="row pdleft">
+        <div class="col-sm-2">
+            <label>Ime:</label>
+            <input type="text" class="form-control" name="fn" required #fn="ngModel" [(ngModel)]="firstname"> 
+            <div class="alert alert-warning p-1" *ngIf="fn.invalid && fn.touched">
+                <small *ngIf="fn.errors?.['required']"> Obavezno polje</small>
+            </div>
+        </div>
+    </div>
+
+    <div class="row pdleft">
+        <div class="col-sm-2">
+            <label>Prezime:</label>
+            <input type="text" class="form-control" name="ln" required #ln="ngModel" [(ngModel)]="lastname"> 
+            <div class="alert alert-warning p-1" *ngIf="ln.invalid && ln.touched">
+                <small *ngIf="ln.errors?.['required']"> Obavezno polje</small>
+            </div>
+        </div>
+    </div>
+
+    <div class="row pdleft">
+        <div class="col-sm-2">
+            <label>Korisnicko ime:</label>
+            <input type="text" class="form-control" name="un" required #un="ngModel" [(ngModel)]="username"> 
+            <div class="alert alert-warning p-1" *ngIf="un.invalid && un.touched">
+                <small *ngIf="un.errors?.['required']"> Obavezno polje</small>
+            </div>
+        </div>
+    </div>
+
+    <div class="row pdleft">
+        <div class="col-sm-2">
+            <label>Lozinka:</label>
+            <input type="password" class="form-control" name="pass" required #pass="ngModel"  pattern="(?=([a-z]|[A-Z]))(?=.*\W)(?=.*\d)(?=.*[A-Z]).{8,12}" [(ngModel)]="password"> 
+            <div class="alert alert-warning p-1" *ngIf="pass.invalid && pass.touched">
+                <small *ngIf="pass.errors?.['required']"> Obavezno polje</small>
+                <small  *ngIf="pass.errors?.['pattern']"> Los format</small>
+            </div>
+        </div>
+    </div>
+
+    <div class="row pdleft">
+        <div class="col-sm-2">
+            <label>Potvrdi lozinku:</label>
+            <input type="password" class="form-control" name="pass2" required #pass2="ngModel" [(ngModel)]="password2"> 
+            <div class="alert alert-warning p-1" *ngIf="pass2.invalid && pass2.touched">
+                <small *ngIf="pass2.errors?.['required']"> Obavezno polje</small>
+            </div>
+        </div>
+    </div>
+
+    <div class="row pdleft">
+        <div class="col-sm-2">
+            <label>Adresa:</label>
+            <input type="text" class="form-control" name="ad" required #ad="ngModel" required pattern="[a-zA-Z0-9\s]+,[a-zA-Z\s]+" [(ngModel)]="adress"> 
+            <div class="alert alert-warning p-1" *ngIf="ad.invalid && ad.touched">
+                <small *ngIf="ad.errors?.['required']"> Obavezno polje</small>
+                <small  *ngIf="ad.errors?.['pattern']"> Los format</small>
+            </div>
+        </div>
+    </div>
+
+    <div class="row pdleft">
+        <div class="col-sm-2">
+            <label>Telefon:</label>
+            <input type="text" class="form-control" name="ph" required #ph="ngModel" pattern="[0-9]+" [(ngModel)]="phone"> 
+            <div class="alert alert-warning p-1" *ngIf="ph.invalid && ph.touched">
+                <small *ngIf="ph.errors?.['required']"> Obavezno polje</small>
+                <small  *ngIf="ph.errors?.['pattern']"> Los format</small>
+            </div>
+        </div>
+    </div>
+
+    <div class="row pdleft">
+        <div class="col-sm-2">
+            <label>Email:</label>
+            <input type="text" class="form-control" name="em" required #em="ngModel"  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" [(ngModel)]="email"> 
+            <div class="alert alert-warning p-1" *ngIf="em.invalid && em.touched">
+                <small *ngIf="em.errors?.['required']"> Obavezno polje</small>
+                <small  *ngIf="em.errors?.['pattern']"> Los format</small>
+            </div>
+        </div>
+    </div>
+
+    <div class="row pdleft">
+        <div class="col-sm-2">
+            <label>Slika:</label>
+            <input type="file" id="myFile" name="profile_picture" (change)="setPicture($event)" >
+        </div>
+    </div>
+   
+    <div class="pdleftdown">
+        <small *ngIf="this.message"  style="color:red;"> {{message}}</small>
+        <small  *ngIf="this.message1" style="color:green;"> {{message1}}</small>
+    </div>
+
+    
+    <div class="pdleft">
+        <button type="button" class="btn btn-danger" [disabled]=" fn.invalid && ln.invalid && un.invalid && pass.invalid && pass2.invalid && ad.invalid && ph.invalid && em.invalid"  
+        (click)="try_to_register()">Registracija</button>
+    </div>
+  
+
+</body>
+
+</html>

@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="col-sm-12">
+                <nav class="navbar navbar-expand-sm menubg">
+
+
+                    <ul class="navbar-nav">
+
+                        <li class="nav-item">
+                            <a class="nav-link" href='javascript:history.back()'>Nazad</a>
+                        </li>
+
+                    </ul>
+
+                    <h3 class="navtext"> Opis knjige </h3>
+
+                    <!--ul class="navbar-nav">
+
+                        <li class="nav-item pdleft ">
+                                <button type="button" class="btn btn-light" (click)="logOut()">Odjava</button>
+                        </li>
+    
+                    </ul-->
+
+
+                </nav>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+
+
+    <div class="row ">
+
+
+        <div class="col-sm-4 pdleft">
+            <img class="margin" [src]="'/assets/' + this.book.picture" alt=""
+                style="max-width: 300px; max-height :400px">
+
+            <div class="row pdleftdown">
+
+                <div class="col-sm-2" *ngIf="this.privilege"> <button type="button" class="btn btn-danger btn-sm"
+                        (click)="picflag()">Promeni </button></div>
+
+                <div class="row col-sm-6 pdleft" *ngIf="this.flagPic">
+                    <div class="col-sm-7">
+                        <input type="file" id="myFile" name="book_picture" (change)="setPicture($event)">
+                    </div>
+                    <div class="col-sm-7">
+                        <button type="button" class="btn btn-danger btn-sm"
+                            (click)="changeBookPicture(this.book.id)">Potvrdi </button>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-sm-6">
+
+            <div class="row pdleftdown">
+                <div class="col-sm-2 borderblack bgred"> Naslov:</div>
+                <div class="col-sm-5 borderblack"> {{this.book.title}} </div>
+                <div class="col-sm-1" *ngIf="this.privilege"> <button type="button" class="btn btn-danger btn-sm"
+                        (click)="tiflag()">Promeni </button> </div>
+
+
+                <div class="row col-sm-6 pdleft" *ngIf="this.flagTi">
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" name="ti" [(ngModel)]="title">
+                    </div>
+                    <div class="col-sm-2">
+                        <button type="button" class="btn btn-danger btn-sm"
+                            (click)="changeTitle(this.book.id,this.title)">Potvrdi </button>
+                    </div>
+
+                </div>
+            </div>
+
+
+
+            <div class="row pdleftdown">
+                <div class="col-sm-2 borderblack bgred"> Autori:</div>
+                <div class="col-sm-5 borderblack"> {{this.book.authors}} </div>
+                <div class="col-sm-1" *ngIf="this.privilege"> <button type="button" class="btn btn-danger btn-sm"
+                        (click)="auflag()">Promeni </button> </div>
+
+
+                <div class="row col-sm-6 pdleft" *ngIf="this.flagAu">
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" name="au" [(ngModel)]="authors">
+                    </div>
+                    <div class="col-sm-2">
+                        <button type="button" class="btn btn-danger btn-sm"
+                            (click)="changeAuthors(this.book.id,this.authors)">Potvrdi </button>
+                    </div>
+
+                </div>
+            </div>
+
+
+            <div class="row pdleftdown">
+                <div class="col-sm-2 borderblack bgred"> Zanr:</div>
+                <div class="col-sm-5 borderblack"> {{this.book.genre}} </div>
+                <div class="col-sm-1" *ngIf="this.privilege"> <button type="button" class="btn btn-danger btn-sm"
+                        (click)="geflag()">Promeni </button> </div>
+
+                <div class="row col-sm-6 pdleft" *ngIf="this.flagGe">
+                    <div class="col-sm-6">
+                        <label>Zanr:</label>
+                        <select multiple class="form-control" [(ngModel)]="genre">
+                            <option value="Triler">Triler </option>
+                            <option value="Horor">Horor </option>
+                            <option value="Drama">Drama </option>
+                            <option value="Fantastika">Fantastika </option>
+                            <option value="Ljubavna">Ljubavna </option>
+                            <option value="Istorijska">Istorijska </option>
+                        </select>
+                    </div>
+
+                    <div class="row-sm-2 pdleftdown" style="color:red;">
+                        {{this.message}}
+                    </div>
+
+                    <div class="col-sm-2 pdleft">
+                        <button type="button" class="btn btn-danger btn-sm"
+                            (click)="changeGenre(this.book.id,this.genre)">Potvrdi </button>
+                    </div>
+
+                </div>
+
+
+            </div>
+
+            <div class="row pdleftdown">
+                <div class="col-sm-2 borderblack bgred"> Izdavac:</div>
+                <div class="col-sm-5 borderblack"> {{this.book.publisher}} </div>
+                <div class="col-sm-1" *ngIf="this.privilege"> <button type="button" class="btn btn-danger btn-sm"
+                        (click)="puflag()">Promeni </button> </div>
+
+
+                <div class="row col-sm-6 pdleft" *ngIf="this.flagPu">
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" name="pu" [(ngModel)]="publisher">
+                    </div>
+                    <div class="col-sm-2">
+                        <button type="button" class="btn btn-danger btn-sm"
+                            (click)="changePublisher(this.book.id,this.publisher)">Potvrdi </button>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="row pdleftdown">
+                <div class="col-sm-2 borderblack bgred"> Godina izdavanja:</div>
+                <div class="col-sm-5 borderblack"> {{this.book.year}} </div>
+                <div class="col-sm-1" *ngIf="this.privilege"> <button type="button" class="btn btn-danger btn-sm"
+                        (click)="yeflag()">Promeni </button> </div>
+
+
+                <div class="row col-sm-6 pdleft" *ngIf="this.flagYe">
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" name="ye" [(ngModel)]="year">
+                    </div>
+                    <div class="col-sm-2">
+                        <button type="button" class="btn btn-danger btn-sm"
+                            (click)="changeYear(this.book.id,this.year)">Potvrdi </button>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="row pdleftdown">
+                <div class="col-sm-2 borderblack bgred"> Jezik:</div>
+                <div class="col-sm-5 borderblack"> {{this.book.language}} </div>
+                <div class="col-sm-1" *ngIf="this.privilege"> <button type="button" class="btn btn-danger btn-sm"
+                        (click)="laflag()">Promeni </button> </div>
+
+
+                <div class="row col-sm-6 pdleft" *ngIf="this.flagLa">
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" name="la" [(ngModel)]="language">
+                    </div>
+                    <div class="col-sm-2">
+                        <button type="button" class="btn btn-danger btn-sm"
+                            (click)="changeLanguage(this.book.id,this.language)">Potvrdi </button>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="row pdleftdown">
+                <div class="col-sm-2 borderblack bgred"> Na stanju:</div>
+                <div class="col-sm-5 borderblack"> {{this.book.amount}} </div>
+                <div class="col-sm-1" *ngIf="this.privilege"> <button type="button" class="btn btn-danger btn-sm"
+                        (click)="amflag()">Promeni </button> </div>
+
+
+                <div class="row col-sm-6 pdleft" *ngIf="this.flagAm">
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" name="am" [(ngModel)]="amount">
+                    </div>
+                    <div class="col-sm-2">
+                        <button type="button" class="btn btn-danger btn-sm"
+                            (click)="changeAmount(this.book.id,this.amount)">Potvrdi </button>
+                    </div>
+
+                </div>
+            </div>
+
+
+            <div class="row pdleftdown">
+                <div class="col-sm-3 borderblack bgred"> Prosecna ocena:</div>
+                <div class="col-sm-4 borderblack"> {{this.midstars}} </div>
+            </div>
+
+            <div class="row col-sm 2 ">
+
+                <div class="pdleftdown" style="color:red;"> </div>
+
+                <div class="col-sm-2 pdleftdown" *ngIf="!this.adminflag">
+                    <button type="button" class="btn btn-danger btn-lg"
+                        (click)="borrowBook(this.book.id)">Zaduzi</button>
+                </div>
+
+                <div class="col-sm-2 pdleftdown" *ngIf="!this.adminflag">
+                    <button type="button" class="btn btn-danger btn-lg"
+                        [disabled]="this.book.amount>0">Rezervisi</button>
+                </div>
+
+            </div>
+
+            <div class="row col-sm 2">
+
+                <div class="row" *ngIf="this.book.amount<=0 && this.errflag" style="color:red;"> Knjige nema na stanju
+                </div>
+                <div class="row" *ngIf="this.havethisbook && this.errflag" style="color:red;"> Vec imate ovu knjigu
+                </div>
+                <div class="row" *ngIf="this.cntlate>0 && this.errflag" style="color:red;"> Imate knjigu za koju ste
+                    zakasnili sa vracanjem.</div>
+                <div class="row" *ngIf="this.cntborrowed>=3 && this.errflag" style="color:red;"> Vec imate 3 knjige.
+                </div>
+
+            </div>
+
+
+
+        </div>
+
+
+
+    </div>
+
+    <div>
+
+        <div *ngIf="this.myReviews.length>0  then thenBlock1 else elseBlock1"></div>
+
+        <ng-template #thenBlock1>
+
+            <div class="row col-sm-8 pdleft">
+
+                <div class="text-decoration-underline pdleft">
+                    <h2>Ocene</h2>
+                </div>
+
+                <table class="table table-striped table-light table-hover table-sm pdleft">
+
+                    <thead>
+                        <tr>
+                            <th>Korisnik:</th>
+                            <th>Komentar:</th>
+                            <th> Broj zvezdica:</th>
+                            <th> Vreme objavljivanja:</th>
+                            <th></th>
+
+
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr *ngFor='let r of myReviews'>
+
+                            <td> {{ this.getlocalUsername(r.idUser) }} </td>
+
+                            <td> {{r.comment}}</td>
+
+                            <td> {{this.formatStars(r.stars)}} </td>
+                            <td> {{this.formatDate(r.date)}}</td>
+
+                            <td *ngIf="r.edited">
+                                (edited)
+                            </td>
+
+                            <td *ngIf="!r.edited">
+
+                            </td>
+
+
+
+
+                        </tr>
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </ng-template>
+
+        <ng-template #elseBlock1>
+            <div>
+                <h3>-Nema Ocena</h3>
+            </div>
+        </ng-template>
+
+    </div>
+
+    <div class="row" *ngIf="!this.adminflag">
+
+
+        <div class="row pdleft col-sm-6 text-decoration-underline">
+            <h2>Dodaj/promeni ocenu</h2>
+        </div>
+
+        <div class="row pdleft  ">
+            <div class="col-sm-2">
+                <label>Komentar:</label>
+                <input type="text" class="form-control" name="comm" [(ngModel)]="comment">
+            </div>
+        </div>
+
+        <div class="row pdleftdown ">
+            <div class="col-sm-2">
+                <label>Ocena:</label>
+                <input type="text" class="form-control" name="stars" [(ngModel)]="stars">
+
+            </div>
+        </div>
+
+
+        <div class="row col-sm 2 pdleftdown">
+            <div class="row" *ngIf="this.message0" style="color:red;"> {{this.message0}}</div>
+            <div class="row" *ngIf="this.message10" style="color:red;"> {{this.message10}}</div>
+            <div class="row" *ngIf="this.message1000" style="color:red;"> {{this.message1000}}</div>
+
+
+        </div>
+
+        <div class="row pdleft ">
+            <div class="col-sm-2">
+                <button type="button" class="btn btn-danger btn-lg" [disabled]="!this.canaddReview()"
+                    (click)="addReview()">Dodaj</button>
+
+            </div>
+
+            <div class="col-sm-2">
+                <button type="button" class="btn btn-danger btn-lg" [disabled]="this.canaddReview()"
+                    (click)="changeReview(this.getmyReviewId())">Promeni</button>
+
+            </div>
+        </div>
+
+
+
+    </div>
+
+
+
+
+
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main Menu</title>
+</head>
+
+<body>
+
+    <div class="container-fluid ">
+
+        <div class="row">
+            <div class="col-sm-12">
+                <nav class="navbar navbar-expand-sm menubg">
+
+                    <ul class="navbar-nav">
+
+                        <li class="nav-item">
+                            <a class="nav-link" href=''>Pocetna</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href='login'>Prijava</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href='register'>Registracija</a>
+                        </li>
+
+                    </ul>
+
+                </nav>
+
+            </div>
+
+        </div>
+
+
+
+
+
+
+        <div class="row pdleftdown pdright">
+
+            <h3>Top 3 knjige:</h3>
+
+            <div class="col-sm-2" style="background-color:aquamarine; ">
+                <img [src]="'/assets/' + this.top3books[this.currindex].picture" alt=""
+                    style="max-width: 100px; max-height :100px">
+
+            </div>
+
+            <div class="col-sm-3" style="background-color:aquamarine;">
+                <div class="row ">
+                    Naslov: {{this.top3books[this.currindex].title}}
+                </div>
+                <div class="row ">
+                    Autori: {{this.top3books[this.currindex].authors}}
+                </div>
+                <div class="row ">
+                    Broj uzimanja: {{this.top3books[this.currindex].borrowcnt}}
+                </div>
+
+            </div>
+
+
+
+
+        </div>
+
+        <div class=" row col-sm-6 pdleft pdright">
+
+            <div class="col-sm-2 pdleft"><button class="btn btn-danger pdleft"
+                    (click)="currindexchange(false)">Prethodna</button> </div>
+            <div class="col-sm-2 pdleft"><button class="btn btn-danger pdleft"
+                    (click)="currindexchange(true)">Sledeca</button> </div>
+
+        </div>
+
+
+        <div class="row pdleft  pdright text-decoration-underline margintop">
+            <h2>Pretraga knjiga</h2>
+        </div>
+
+
+        <div class="row pdleft pdright">
+
+            <div class="col-sm-2 pdleftdown">
+                <label>Naslov</label>
+                <input type="text" class="form-control" name="searchTitle" [(ngModel)]="searchTitle">
+            </div>
+
+        </div>
+
+        <div class="row pdleftdown pdright">
+
+            <div class="col-sm-2 pdleft">
+                <label>Autori:</label>
+                <input type="text" class="form-control" name="searchAuthors" [(ngModel)]="searchAuthors">
+            </div>
+
+        </div>
+
+        <div class="row pdleft pdright">
+
+            <div class="col-sm-2 ">
+                <button class="btn btn-danger"
+                    (click)="BasicSearchBooks(this.searchTitle,this.searchAuthors)">Pretraga</button>
+            </div>
+
+
+        </div>
+
+
+
+
+        <div *ngIf="this.searchedBooks.length>0 then thenBlock1 else elseBlock1"></div>
+
+        <ng-template #thenBlock1>
+
+            <div class="text-decoration-underline col-sm-4 pdleft pdright">
+                <h2>Pregled Knjiga</h2>
+            </div>
+
+            <table class=" col-sm-12 table table-striped table-light table-hover table-sm pdleft pdright">
+
+                <thead>
+                    <tr>
+                        <th>Naslov:</th>
+                        <th> Autori:</th>
+                        <th> Zanr:</th>
+                        <th>Izdavac:</th>
+                        <th>Godina izdavanja:</th>
+                        <th>Jezik:</th>
+                        <th>Predlozio:</th>
+                        <th>Slika:</th>
+
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr *ngFor='let r of searchedBooks'>
+
+                        <td> {{r.title}} </td>
+                        <td> {{r.authors}} </td>
+                        <td> {{r.genre}}</td>
+                        <td>{{r.publisher}}</td>
+                        <td>{{r.year}}</td>
+                        <td>{{r.language}}</td>
+                        <td>{{ this.getMyUserUsername(r.asker) }}</td>
+                        <td> <img [src]="'/assets/' + r.picture" alt="" style="max-width: 100px; max-height :100px">
+                        </td>
+
+
+
+
+
+                    </tr>
+                </tbody>
+
+            </table>
+
+        </ng-template>
+
+        <ng-template #elseBlock1>
+            <h3>-Nema trazenih knjiga</h3>
+        </ng-template>
+
+
+
+    </div>
+
+</body>
+
+</html>

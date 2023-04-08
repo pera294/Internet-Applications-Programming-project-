@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="col-sm-12">
+                <nav class="navbar navbar-expand-sm menubg">
+
+
+                    <ul class="navbar-nav">
+
+                        <li class="nav-item">
+                            <a class="nav-link" href='javascript:history.back()'>Nazad</a>
+                        </li>
+
+                    </ul>
+
+                    <h3 class="navtext"> Moj Profil </h3>
+
+                    <ul class="navbar-nav">
+
+                        <li class="nav-item pdleft ">
+                            <button type="button" class="btn btn-light" (click)="logOut()">Odjava</button>
+                        </li>
+
+                    </ul>
+
+
+                </nav>
+
+            </div>
+
+        </div>
+
+
+
+
+        <div class="row">
+            <div class="col-sm-12 pdleft pdright">
+
+                <img class="margin" [src]="'/assets/' + this.user.picture" alt=""
+                    style="max-width: 200px; max-height :200px">
+
+                <div class="row pdleftdown pdright">
+                    <div class="col-sm-2 borderblack bgred "> Profilna slika</div>
+                    <div class="col-sm-1 "> <button type="button" class="btn btn-danger btn-sm"
+                            (click)="picflag()">Promeni
+                        </button></div>
+
+                    <div class="row col-sm-6 pdleft" *ngIf="this.flagPic">
+                        <div class="col-sm-5">
+                            <input type="file" id="myFile" name="profile_picture" (change)="setPicture($event)">
+                        </div>
+                        <div class="col-sm-2">
+                            <button type="button" class="btn btn-danger btn-sm"
+                                (click)="changePicture(this.user.id)">Potvrdi </button>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="row pdleftdown pdright">
+                    <div class="col-sm-2 borderblack bgred">Korisnicko ime:</div>
+                    <div class="col-sm-2 borderblack"> {{this.user.username}}</div>
+                    <div class="col-sm-1"> <button type="button" class="btn btn-danger btn-sm"
+                            (click)="unflag()">Promeni
+                        </button> </div>
+
+                    <div class="row col-sm-7 pdleft" *ngIf="this.flagUn">
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" name="un" required #ln="ngModel"
+                                [(ngModel)]="username">
+                        </div>
+
+                        <div class="col-sm-4 pdleftdown" style="color:red;" *ngIf="this.messageUser">
+                            {{this.messageUser}}
+                        </div>
+
+                        <div class="col-sm-2">
+                            <button type="button" class="btn btn-danger btn-sm"
+                                (click)="changeUsername(this.user.id,this.username)">Potvrdi </button>
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+
+                <div class="row pdleftdown pdright">
+                    <div class="col-sm-2 borderblack bgred"> Ime:</div>
+                    <div class="col-sm-2 borderblack"> {{this.user.firstname}} </div>
+                    <div class="col-sm-1"> <button type="button" class="btn btn-danger btn-sm"
+                            (click)="fnflag()">Promeni
+                        </button> </div>
+
+                    <div class="row col-sm-6 pdleft" *ngIf="this.flagFn">
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" name="fn" [(ngModel)]="firstname">
+                        </div>
+                        <div class="col-sm-2">
+                            <button type="button" class="btn btn-danger btn-sm"
+                                (click)="changeFirstname(this.user.id,this.firstname)">Potvrdi </button>
+                        </div>
+
+                    </div>
+                </div>
+
+
+                <div class="row pdleftdown pdright">
+                    <div class="col-sm-2 borderblack bgred"> Prezime:</div>
+                    <div class="col-sm-2 borderblack"> {{this.user.lastname}}</div>
+                    <div class="col-sm-1"> <button type="button" class="btn btn-danger btn-sm"
+                            (click)="lnflag()">Promeni
+                        </button> </div>
+
+                    <div class="row col-sm-6 pdleft" *ngIf="this.flagLn">
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" name="ln" [(ngModel)]="lastname">
+                        </div>
+                        <div class="col-sm-2">
+                            <button type="button" class="btn btn-danger btn-sm"
+                                (click)="changeLastname(this.user.id,this.lastname)">Potvrdi </button>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="row pdleftdown pdright">
+                    <div class="col-sm-2 borderblack bgred"> Adresa:</div>
+                    <div class="col-sm-2 borderblack"> {{this.user.adress}}</div>
+                    <div class="col-sm-1"> <button type="button" class="btn btn-danger btn-sm"
+                            (click)="adflag()">Promeni
+                        </button> </div>
+
+                    <div class="row col-sm-6 pdleft" *ngIf="this.flagAd">
+
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" name="ad" #ad="ngModel"
+                                pattern="[a-zA-Z0-9\s]+,[a-zA-Z\s]+" [(ngModel)]="adress">
+                        </div>
+
+                        <div class=" col-sm-4 alert alert-warning p-1" *ngIf="ad.invalid && ad.touched">
+                            <small *ngIf="ad.errors?.['pattern']"> Los format</small>
+                        </div>
+
+                        <div class="col-sm-2">
+                            <button type="button" class="btn btn-danger btn-sm"
+                                (click)="changeAdress(this.user.id,this.adress)">Potvrdi </button>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="row pdleftdown pdright">
+                    <div class="col-sm-2 borderblack bgred"> Telefon:</div>
+                    <div class="col-sm-2 borderblack"> {{this.user.phone}}</div>
+                    <div class="col-sm-1"> <button type="button" class="btn btn-danger btn-sm"
+                            (click)="phflag()">Promeni
+                        </button> </div>
+
+                    <div class="row col-sm-6 pdleft" *ngIf="this.flagPh">
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" name="ph" #ph="ngModel" pattern="[0-9]+"
+                                [(ngModel)]="phone">
+
+                        </div>
+                        <div class=" col-sm-4 alert alert-warning p-1" *ngIf="ph.invalid && ph.touched">
+                            <small *ngIf="ph.errors?.['pattern']"> Los format</small>
+                        </div>
+
+                        <div class="col-sm-2">
+                            <button type="button" class="btn btn-danger btn-sm"
+                                (click)="changePhone(this.user.id,this.phone)">Potvrdi </button>
+                        </div>
+
+
+
+                    </div>
+
+                </div>
+
+
+                <div class="row pdleftdown pdright">
+                    <div class="col-sm-2 borderblack bgred">Email:</div>
+                    <div class="col-sm-2 borderblack"> {{this.user.email}}</div>
+                    <div class="col-sm-1"> <button type="button" class="btn btn-danger btn-sm"
+                            (click)="emflag()">Promeni
+                        </button> </div>
+
+                    <div class="row col-sm-7 pdleft" *ngIf="this.flagEm">
+
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" name="em" #em="ngModel"
+                                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" [(ngModel)]="email">
+                        </div>
+
+                        <div class=" col-sm-4 " style="color:red;" *ngIf="this.messageEmail">{{this.messageEmail}}
+                        </div>
+
+                        <div class=" col-sm-4 alert alert-warning p-1" *ngIf="em.invalid && em.touched">
+                            <small *ngIf="em.errors?.['pattern']"> Los format</small>
+                        </div>
+                        <div class="col-sm-2">
+                            <button type="button" class="btn btn-danger btn-sm"
+                                (click)="changeEmail(this.user.id,this.email)">Potvrdi </button>
+                        </div>
+
+                    </div>
+
+
+
+                </div>
+
+
+
+            </div>
+
+        </div>
+
+
+        <div class="row pdleft pdright" *ngIf="this.flagPass">
+
+            <div class="row col-sm-7 pdleft">
+
+                <div class="col-sm-3">
+                    Lozinka
+                </div>
+
+                <div class="col-sm-3">
+                    <input type="password" class="form-control" name="pass" #pass="ngModel"
+                        pattern="(?=([a-z]|[A-Z]))(?=.*\W)(?=.*\d)(?=.*[A-Z]).{8,12}" [(ngModel)]="password">
+                    <div class="alert alert-warning p-1" *ngIf="pass.invalid && pass.touched">
+                        <small *ngIf="pass.errors?.['pattern']"> Los format</small>
+                    </div>
+                </div>
+
+
+            </div>
+
+            <div class="row col-sm-7 pdleft pdright">
+                <div class="col-sm-3">
+                    Nova Lozinka
+                </div>
+
+                <div class="col-sm-3">
+                    <input type="password" class="form-control" name="pass2" required #pass2="ngModel"
+                        pattern="(?=([a-z]|[A-Z]))(?=.*\W)(?=.*\d)(?=.*[A-Z]).{8,12}" [(ngModel)]="password2">
+                    <div class="alert alert-warning p-1" *ngIf="pass2.invalid && pass2.touched">
+                        <small *ngIf="pass2.errors?.['required']"> Obavezno polje</small>
+                        <small *ngIf="pass2.errors?.['pattern']"> Los format</small>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row col-sm-7 pdleftdown pdright">
+                <div class="col-sm-3">
+                    Ponovite lozinku
+                </div>
+
+                <div class="col-sm-3">
+                    <input type="password" class="form-control" name="pass3" required #pass3="ngModel"
+                        pattern="(?=([a-z]|[A-Z]))(?=.*\W)(?=.*\d)(?=.*[A-Z]).{8,12}" [(ngModel)]="password3">
+                    <div class="alert alert-warning p-1" *ngIf="pass3.invalid && pass3.touched">
+                        <small *ngIf="pass3.errors?.['required']"> Obavezno polje</small>
+                        <small *ngIf="pass3.errors?.['pattern']"> Los format</small>
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+        <div class="row col-sm 2 pdleft pdright">
+
+
+            <div class="col-sm-2 pdleftdown" *ngIf="!this.flagPass">
+                <button type="button" class="btn btn-danger" (click)="passflag()">Promeni lozinku</button>
+            </div>
+
+            <div class="pdleftdown" style="color:red;">{{this.messagePass}} </div>
+
+            <div class="col-sm-2 pdleftdown" *ngIf="this.flagPass">
+                <button type="button" class="btn btn-danger" (click)="passflag()">Nazad</button>
+            </div>
+
+            <div class="col-sm-2 pdleftdown" *ngIf="this.flagPass">
+                <button type="button" class="btn btn-danger"
+                    (click)="changePassword(this.user.id,this.password,this.password2,this.password3)">Potvrdi</button>
+            </div>
+
+        </div>
+
+
+
+        <div class="chart-container col-sm-6">
+            <canvas id="MyChart1">{{ chart1 }}</canvas>
+        </div>
+
+        <div class="chart-container col-sm-6">
+            <canvas id="MyChart2">{{ chart2 }}</canvas>
+        </div>
+
+
+
+    </div>
+
+</body>
+
+
+
+</html>
