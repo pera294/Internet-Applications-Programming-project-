@@ -1,0 +1,261 @@
+[{
+  "_id": {
+    "$oid": "632a6efd4000a5032a9746f8"
+  },
+  "idUser": 5,
+  "idBook": 1,
+  "date1": "1663725309813",
+  "date2": "1663725327686",
+  "datedue": "1664934909813",
+  "extended": false,
+  "returned": true,
+  "id": 1,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "632a6f0b4000a5032a97471d"
+  },
+  "idUser": 5,
+  "idBook": 5,
+  "date1": "1663725323258",
+  "date2": "1663725326857",
+  "datedue": "1664934923258",
+  "extended": false,
+  "returned": true,
+  "id": 2,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "632a6f334000a5032a974762"
+  },
+  "idUser": 5,
+  "idBook": 5,
+  "date1": "1663725363260",
+  "date2": "1663725384276",
+  "datedue": "1664934963260",
+  "extended": false,
+  "returned": true,
+  "id": 3,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "632a6f394000a5032a97477a"
+  },
+  "idUser": 5,
+  "idBook": 2,
+  "date1": "1663725369384",
+  "date2": "1663725382768",
+  "datedue": "1666144569384",
+  "extended": true,
+  "returned": true,
+  "id": 4,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "632a6f4b4000a5032a9747b2"
+  },
+  "idUser": 5,
+  "idBook": 6,
+  "date1": "1663725387576",
+  "date2": "1663725425675",
+  "datedue": "1664934987576",
+  "extended": false,
+  "returned": true,
+  "id": 5,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "632a6f524000a5032a9747ca"
+  },
+  "idUser": 5,
+  "idBook": 5,
+  "date1": "1663725394143",
+  "date2": null,
+  "datedue": "1664934994143",
+  "extended": false,
+  "returned": false,
+  "id": 6,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "632a6f594000a5032a9747e3"
+  },
+  "idUser": 5,
+  "idBook": 8,
+  "date1": "1663725401741",
+  "date2": null,
+  "datedue": "1664935001741",
+  "extended": false,
+  "returned": false,
+  "id": 7,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "632a6fa54000a5032a974844"
+  },
+  "idUser": 2,
+  "idBook": 1,
+  "date1": "1663725477244",
+  "date2": "1663725483061",
+  "datedue": "1664935077244",
+  "extended": false,
+  "returned": true,
+  "id": 8,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "632a6fbe4000a5032a974870"
+  },
+  "idUser": 2,
+  "idBook": 2,
+  "date1": "1663725502024",
+  "date2": "1663725530077",
+  "datedue": "1664935102024",
+  "extended": false,
+  "returned": true,
+  "id": 9,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "632a6fc14000a5032a974888"
+  },
+  "idUser": 2,
+  "idBook": 7,
+  "date1": "1663725505487",
+  "date2": "1663725532136",
+  "datedue": "1664935105487",
+  "extended": false,
+  "returned": true,
+  "id": 10,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "632a6fd34000a5032a9748b6"
+  },
+  "idUser": 2,
+  "idBook": 3,
+  "date1": "1663725523263",
+  "date2": "1663725530742",
+  "datedue": "1664935123263",
+  "extended": false,
+  "returned": true,
+  "id": 11,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "632a6fe54000a5032a9748e4"
+  },
+  "idUser": 2,
+  "idBook": 3,
+  "date1": "1663725541812",
+  "date2": null,
+  "datedue": "1664935141812",
+  "extended": false,
+  "returned": false,
+  "id": 12,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "632a6fe84000a5032a9748fc"
+  },
+  "idUser": 2,
+  "idBook": 2,
+  "date1": "1663725544941",
+  "date2": null,
+  "datedue": "1664935144941",
+  "extended": false,
+  "returned": false,
+  "id": 13,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "632a6ff14000a5032a974923"
+  },
+  "idUser": 2,
+  "idBook": 6,
+  "date1": "1663725553506",
+  "date2": "1663725571279",
+  "datedue": "1664935153506",
+  "extended": false,
+  "returned": true,
+  "id": 14,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "632a70064000a5032a974943"
+  },
+  "idUser": 2,
+  "idBook": 6,
+  "date1": "1663725574048",
+  "date2": null,
+  "datedue": "1664935174048",
+  "extended": false,
+  "returned": false,
+  "id": 15,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "632a704f4000a5032a974984"
+  },
+  "idUser": 6,
+  "idBook": 6,
+  "date1": "1663725647243",
+  "date2": "1663725664893",
+  "datedue": "1664935247243",
+  "extended": false,
+  "returned": true,
+  "id": 16,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "632a70564000a5032a97499c"
+  },
+  "idUser": 6,
+  "idBook": 1,
+  "date1": "1663725654434",
+  "date2": "1663725664137",
+  "datedue": "1664935254434",
+  "extended": false,
+  "returned": true,
+  "id": 17,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "632a70644000a5032a9749c7"
+  },
+  "idUser": 6,
+  "idBook": 1,
+  "date1": "1663725668005",
+  "date2": null,
+  "datedue": "1664935268005",
+  "extended": false,
+  "returned": false,
+  "id": 18,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "632a706a4000a5032a9749df"
+  },
+  "idUser": 6,
+  "idBook": 6,
+  "date1": "1663725674383",
+  "date2": null,
+  "datedue": "1664935274383",
+  "extended": false,
+  "returned": false,
+  "id": 19,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "632a70704000a5032a9749f8"
+  },
+  "idUser": 6,
+  "idBook": 3,
+  "date1": "1663725680816",
+  "date2": null,
+  "datedue": "1664935280816",
+  "extended": false,
+  "returned": false,
+  "id": 20,
+  "__v": 0
+}]

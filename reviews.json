@@ -1,0 +1,49 @@
+[{
+  "_id": {
+    "$oid": "632a6f254000a5032a974752"
+  },
+  "idUser": 5,
+  "idBook": 5,
+  "comment": "extra je ",
+  "stars": 9,
+  "date": "1663725349444",
+  "edited": true,
+  "id": 1,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "632a6f7b4000a5032a97481b"
+  },
+  "idUser": 5,
+  "idBook": 6,
+  "comment": "sve je super",
+  "stars": 10,
+  "date": "1663725435297",
+  "edited": false,
+  "id": 2,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "632a6fb64000a5032a974860"
+  },
+  "idUser": 2,
+  "idBook": 1,
+  "comment": "kul je ",
+  "stars": 9,
+  "date": "1663725494395",
+  "edited": false,
+  "id": 3,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "632a700b4000a5032a97494e"
+  },
+  "idUser": 2,
+  "idBook": 6,
+  "comment": "ok je ",
+  "stars": 5,
+  "date": "1663725579109",
+  "edited": false,
+  "id": 4,
+  "__v": 0
+}]

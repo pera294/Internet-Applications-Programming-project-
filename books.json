@@ -1,0 +1,137 @@
+[{
+  "_id": {
+    "$oid": "632395261d1cae08ba676ec5"
+  },
+  "title": "Game of thrones",
+  "authors": "George Martin",
+  "genre": "Drama,Fantastika,Istorijska",
+  "publisher": "Laguna",
+  "year": "2000",
+  "language": "Engleski",
+  "picture": "book_1.jpg",
+  "status": "prihvacen",
+  "asker": 2,
+  "amount": 0,
+  "borrowcnt": 4,
+  "id": 1,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "632a693f4000a5032a97449d"
+  },
+  "title": "Zlocin i kazna",
+  "authors": "Fjodor Dostojevski",
+  "genre": "Drama,Istorijska",
+  "publisher": "Delfi",
+  "year": "1866",
+  "language": "Ruski",
+  "picture": "book_6.jpg",
+  "status": "prihvacen",
+  "asker": 1,
+  "amount": 3,
+  "borrowcnt": 3,
+  "id": 2,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "632a6a2e4000a5032a9744e7"
+  },
+  "title": "Lord of the rings ",
+  "authors": "J.R.R Tolkien",
+  "genre": "Triler,Fantastika",
+  "publisher": "Laguna",
+  "year": "1973",
+  "language": "Engleski",
+  "picture": "book_7.png",
+  "status": "prihvacen",
+  "asker": 5,
+  "amount": 0,
+  "borrowcnt": 3,
+  "id": 3,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "632a6a6d4000a5032a9744ef"
+  },
+  "title": "perina knjiga",
+  "authors": " Petar,Simic,,Luka Kostic",
+  "genre": "Triler,Horor,Drama",
+  "publisher": "Mikroknjiga",
+  "year": "2017",
+  "language": "Srpski",
+  "picture": "book_default.jpg",
+  "status": "nije prihvacen",
+  "asker": 5,
+  "amount": 1,
+  "borrowcnt": 0,
+  "id": 4,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "632a6aea4000a5032a974515"
+  },
+  "title": "Autostoperski vodic kroz galaksiju",
+  "authors": "Daglas Adams",
+  "genre": "Fantastika,Istorijska",
+  "publisher": "Laguna",
+  "year": "1977",
+  "language": "Engleski",
+  "picture": "book_9.png",
+  "status": "prihvacen",
+  "asker": 6,
+  "amount": 1,
+  "borrowcnt": 3,
+  "id": 5,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "632a6bea4000a5032a974543"
+  },
+  "title": "Programski jezik c++",
+  "authors": "Laslo Kraus",
+  "genre": "Fantastika,Istorijska",
+  "publisher": "Mikroknjiga",
+  "year": "2002",
+  "language": "Srpski",
+  "picture": "book_10.png",
+  "status": "prihvacen",
+  "asker": 2,
+  "amount": 1,
+  "borrowcnt": 5,
+  "id": 6,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "632a6c4b4000a5032a97455e"
+  },
+  "title": "Noletova Autobiografija",
+  "authors": "Novak Djokovic",
+  "genre": "Istorijska",
+  "publisher": "Vulkan",
+  "year": "2022",
+  "language": "Srpski",
+  "picture": "book_default.jpg",
+  "status": "prihvacen",
+  "asker": 4,
+  "amount": 1,
+  "borrowcnt": 1,
+  "id": 7,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "632a6e014000a5032a9746df"
+  },
+  "title": "adminknjgia",
+  "authors": "Nikola Milosavljevic,Luka Kostic",
+  "genre": "Horor,Drama",
+  "publisher": "Laguna",
+  "year": "2005",
+  "language": "Srpski",
+  "picture": "book_default.jpg",
+  "status": "prihvacen",
+  "asker": 1,
+  "amount": 0,
+  "borrowcnt": 1,
+  "id": 8,
+  "__v": 0
+}]

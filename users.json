@@ -1,0 +1,103 @@
+[{
+  "_id": {
+    "$oid": "631bd3eddfedf1e819a56807"
+  },
+  "username": "admin",
+  "password": "Admin123.",
+  "firstname": "admin",
+  "lastname": "admin",
+  "adress": "adminovksa 1,Pn",
+  "phone": "213213",
+  "email": "admin@gmail.com",
+  "picture": "profile_default.png",
+  "type": "admin",
+  "status": "prihvacen",
+  "id": 1,
+  "__v": 0,
+  "blocked": false
+},{
+  "_id": {
+    "$oid": "632393791d1cae08ba676e92"
+  },
+  "username": "Neda",
+  "password": "Neda123.",
+  "firstname": "Neda",
+  "lastname": "Simic",
+  "adress": "Laze Lazarevica 21,Paracin",
+  "phone": "21312353234",
+  "email": "neda@gmail.com",
+  "picture": "profile_default.png",
+  "type": "moderator",
+  "status": "prihvacen",
+  "id": 2,
+  "__v": 0,
+  "blocked": false
+},{
+  "_id": {
+    "$oid": "632a63ee4000a5032a974299"
+  },
+  "username": "elon",
+  "password": "Elon123.",
+  "firstname": "Elon",
+  "lastname": "Musk",
+  "adress": "Deer Creek Rd 3500,California",
+  "phone": "18885183752",
+  "email": "elonmusk@gmail.com",
+  "picture": "profile_3.jpg",
+  "type": "reader",
+  "status": "nije prihvacen",
+  "blocked": false,
+  "id": 3,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "632a64554000a5032a9742a7"
+  },
+  "username": "nole",
+  "password": "Nole123.",
+  "firstname": "Novak",
+  "lastname": "Djokovic",
+  "adress": " Bulevar Mihajla Pupina 6, Beograd",
+  "phone": "065223344",
+  "email": "nole@gmail.com",
+  "picture": "profile_4.jpg",
+  "type": "moderator",
+  "status": "prihvacen",
+  "blocked": true,
+  "id": 4,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "632a66834000a5032a9743fe"
+  },
+  "username": "pera123",
+  "password": "Pera123.",
+  "firstname": "Petar",
+  "lastname": "Simic",
+  "adress": "Kralja Petra 23,Paracin",
+  "phone": "065232343",
+  "email": "pera@gmail.com",
+  "picture": "profile_5.png",
+  "type": "reader",
+  "status": "prihvacen",
+  "blocked": false,
+  "id": 5,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "632a66f84000a5032a974413"
+  },
+  "username": "walter",
+  "password": "Walter123.",
+  "firstname": "Walter",
+  "lastname": "White",
+  "adress": "Negra Arroyo Lane 308,Albuquerque",
+  "phone": "18877232",
+  "email": "heisenberg@gmail.com",
+  "picture": "profile_6.png",
+  "type": "reader",
+  "status": "prihvacen",
+  "blocked": true,
+  "id": 6,
+  "__v": 0
+}]
